@@ -1,0 +1,19 @@
+import java.util.*;
+public class Main{
+    public static int firstIndex(int arr[], int x, int si){
+        if(si == arr.length){
+            return -1;
+        }
+        if(arr[si] == x){
+            return si;
+        }
+
+        int output = firstIndex(arr, x, si+1);
+
+        return output;
+    }
+    public static void main(String args[]){
+        int arr[] = {1,2,3,4,5};
+        System.out.print(firstIndex(arr, 5, 0));
+    }
+}
