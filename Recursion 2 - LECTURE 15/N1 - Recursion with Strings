@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main{
+    public static String replaceChar(String s, char a, char b){
+        // Base Case
+        if(s.length() == 0){
+            return s;
+        }
+
+        //Recursion Part
+        String smallStr = replaceChar(s.substring(1), a, b);
+
+        if(s.charAt(0) == a){
+            return b + smallStr;
+        }else{
+            return s.charAt(0)+smallStr;
+        }
+    }
+
+    public static void main(String args[]){
+        System.out.print(replaceChar("abcxdxex", 'x', 'y'));
+    }
+}
