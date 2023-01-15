@@ -1,0 +1,61 @@
+// Raw Code
+
+import java.util.*;
+public class Main{
+    public static String replacePI(String s){
+        // Base Case
+        if(s.length() <= 1){
+            return s;
+        }
+
+        // Recursion Part && Induction Hypothesis
+        String smallStr = "";
+        if(s.length()>=2 && s.charAt(0) == 'p' && s.charAt(1) == 'i'){
+            smallStr = replacePI(s.substring(2));
+        }else{
+            smallStr = replacePI(s.substring(1));
+        }
+
+        // Induction Step
+        if(s.length()>=2 && s.charAt(0) == 'p' && s.charAt(1) == 'i'){
+            return "3.14" + smallStr;
+        }else{
+            return s.charAt(0) + smallStr;
+        }
+
+    }
+
+    public static void main(String args[]){
+        System.out.print(replacePI("apiapipipiip"));
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+
+// A little bit Optimized Code
+
+import java.util.*;
+public class Main{
+    public static String replacePI(String s){
+        // Base Case
+        if(s.length() <= 1){
+            return s;
+        }
+
+        // Recursion Part && Induction Hypothesis
+        String smallStr = "";
+        if(s.length()>=2 && s.charAt(0) == 'p' && s.charAt(1) == 'i'){
+            smallStr = replacePI(s.substring(2));
+            return "3.14" + smallStr;
+        }else{
+            smallStr = replacePI(s.substring(1));
+            return s.charAt(0) + smallStr;
+        }
+
+    }
+
+    public static void main(String args[]){
+        System.out.print(replacePI("apiapipipiip"));
+    }
+
+}
