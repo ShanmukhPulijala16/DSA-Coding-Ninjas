@@ -29,5 +29,51 @@ false
 true
 Explanation for the Sample Input 2 :
 For the first query, it is pretty intuitive that the the given list is not a palindrome, hence the output is 'false'.
-
 For the second query, the list is empty. An empty list is always a palindrome , hence the output is 'true'.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+import java.util.*;
+public class Solution {
+
+	public static boolean isPalindrome(LinkedListNode<Integer> head) {
+		//Your code goes here
+		boolean flag = true;
+		if(head == null){
+			return flag;
+		}
+		if(head.next == null){
+			return flag;
+		}
+		int count = 0;
+		LinkedListNode<Integer> temp = head;
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		while(temp != null){
+			count++;
+			arr.add(temp.data);
+			temp = temp.next;
+		}
+		for(int i=0; i<count/2; i++){
+			if(arr.get(i) != arr.get(count-i-1)){
+				flag = false;
+			}
+		}
+		return flag;
+	}
+	
+}
