@@ -1,0 +1,69 @@
+package binaryTrees;
+
+public class BinaryTreeNode<T> {
+	public T data;
+	public BinaryTreeNode<T> left;
+	public BinaryTreeNode<T> right;
+	
+	public BinaryTreeNode(T data) {
+		this.data = data;
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package binaryTrees;
+
+public class BinaryTreeUse {
+	
+	public static void printTreeDetailed(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return;
+		}
+		System.out.print(root.data + ":");
+		if(root.left != null) {
+			System.out.print(" - L" + root.left.data);
+		}
+		if(root.right != null) {
+			System.out.print(" - R" + root.right.data);
+		}
+		System.out.println();
+		printTreeDetailed(root.left);
+		printTreeDetailed(root.right);
+	}
+	
+	public static void printTree(BinaryTreeNode<Integer> root){
+		if(root == null) {
+			return;
+		}
+		System.out.print(root.data);
+		System.out.println();
+		printTree(root.left);
+		printTree(root.right);
+	}
+
+	public static void main(String[] args) {
+		// This syntax is when there is Default Constructor that is when there is no constructor 
+		// in BinaryTreeNode class , you can do this
+		// BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>();
+		// root.data = 1;
+		
+		// When we define a constructor in BinaryTreeNode class, the default constructor goes away
+		// and the above syntax does not work. Now we need slightly different syntax
+		
+		BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(1);
+		BinaryTreeNode<Integer> rootLeft = new BinaryTreeNode<Integer>(2);
+		BinaryTreeNode<Integer> rootRight = new BinaryTreeNode<Integer>(3);
+		root.left = rootLeft;
+		root.right = rootRight;
+		
+		BinaryTreeNode<Integer> rLRight = new BinaryTreeNode<Integer>(5);
+		BinaryTreeNode<Integer> rRLeft = new BinaryTreeNode<Integer>(4);
+		rootLeft.right = rLRight;
+		rootRight.left = rRLeft;
+		
+		printTreeDetailed(root);
+		
+		}
+
+}
