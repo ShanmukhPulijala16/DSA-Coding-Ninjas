@@ -1,0 +1,39 @@
+package recursion;
+
+import java.util.*;
+
+public class Recursion {
+	
+	public static String[] subSequence(String input) {
+		// Base Case
+		if(input.length() == 0) {
+			String arr[] = new String[1];
+			arr[0] = "";
+			return arr;
+		}
+		
+		String smallOutput[] = subSequence(input.substring(1));
+		
+		String output[] = new String[smallOutput.length * 2];
+		for(int i=0; i<smallOutput.length; i++) {
+			output[i] = smallOutput[i];
+		}
+		for(int i=0; i<smallOutput.length; i++) {
+			output[smallOutput.length + i]  = input.charAt(0) + smallOutput[i];
+		}
+		
+		return output;
+	}
+
+	public static void main(String args[]) {
+		Scanner sc = new  Scanner(System.in);
+		System.out.println("Enter string : ");
+		String str = sc.next();
+		String outStr[] = subSequence(str);
+		for(String s:outStr) {
+			System.out.println(s);
+		}
+		
+	}
+
+}
