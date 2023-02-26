@@ -1,0 +1,25 @@
+package recursion;
+
+import java.util.Scanner;
+
+public class Factorial {
+
+	private static void factorial(int n, int answer) {
+		if(n==0) {
+			System.out.println(answer);
+			return;
+		}
+		answer = answer * n;
+		factorial(n-1, answer);
+	}
+	public static void factorial(int n) {
+		factorial(n , 1);
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		factorial(n);
+	}
+
+}
